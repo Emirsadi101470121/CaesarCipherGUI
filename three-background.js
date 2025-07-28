@@ -3,8 +3,9 @@ console.log("three-background.js loaded");
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(40, 40, 180);
+camera.position.set(60, 60, 260);
 camera.lookAt(0, 0, 0);
+
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.getElementById("bgCanvas"),
@@ -14,7 +15,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-const geometry = new THREE.TorusGeometry(120, 3.2, 32, 120);
+const geometry = new THREE.TorusGeometry(120, 6, 32, 120);
 const material = new THREE.MeshStandardMaterial({
   color: 0x00aaff,
   emissive: 0x00aaff,
