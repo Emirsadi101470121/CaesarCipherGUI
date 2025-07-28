@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(40, 40, 150);
+camera.position.set(40, 40, 180);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({
@@ -19,32 +19,32 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-const geometry = new THREE.TorusGeometry(70, 2.2, 16, 100);
+// LED-like glowing material
+const geometry = new THREE.TorusGeometry(90, 2.8, 32, 120);
 const material = new THREE.MeshStandardMaterial({
-  color: 0x3399ff,
-  emissive: 0x112244,
-  metalness: 0.7,
-  roughness: 0.3,
+  color: 0x00aaff,
+  emissive: 0x0088ff,
+  emissiveIntensity: 1.5,
+  metalness: 0.6,
+  roughness: 0.2,
 });
 
 const torus = new THREE.Mesh(geometry, material);
 torus.rotation.x = Math.PI / 2;
 scene.add(torus);
 
-const pointLight = new THREE.PointLight(0xffffff, 1.5);
-pointLight.position.set(50, 50, 100);
+const pointLight = new THREE.PointLight(0x88ccff, 2);
+pointLight.position.set(80, 80, 120);
 scene.add(pointLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+const ambientLight = new THREE.AmbientLight(0x226688, 0.4);
 scene.add(ambientLight);
 
 function animate() {
   torus.rotation.z += 0.01;
   torus.rotation.y += 0.005;
-
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
-  console.log("rotating...");
 }
 
 animate();
