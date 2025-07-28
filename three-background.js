@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
     antialias: true,
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const geometry = new THREE.TorusGeometry(70, 2.2, 16, 100);
   const material = new THREE.MeshStandardMaterial({
@@ -26,7 +26,7 @@ window.addEventListener("load", () => {
   });
 
   const torus = new THREE.Mesh(geometry, material);
-  torus.rotation.x = Math.PI / 2; 
+  torus.rotation.x = Math.PI / 2;
   scene.add(torus);
 
   const pointLight = new THREE.PointLight(0xffffff, 2);
@@ -36,20 +36,25 @@ window.addEventListener("load", () => {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
 
-  function animate() {
+  let previousTime = performance.now();
+
+  function animate(currentTime) {
     requestAnimationFrame(animate);
+    const delta = (currentTime - previousTime) / 1000;
+    previousTime = currentTime;
 
-    
-    torus.rotation.z += 0.01;
-
+    torus.rotation.z += delta * 1.2;
     renderer.render(scene, camera);
   }
 
-  animate();
+  animate(performance.now());
 
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
+
+  window.addEventListener("touchstart", () => animate(performance.now()));
+  window.addEventListener("mousemove", () => animate(performance.now()));
 });
