@@ -7,6 +7,8 @@ window.addEventListener("load", () => {
     0.1,
     1000
   );
+  camera.position.z = 150;
+
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("bgCanvas"),
     alpha: true,
@@ -15,15 +17,16 @@ window.addEventListener("load", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const geometry = new THREE.TorusGeometry(70, 1.5, 16, 100);
+  const geometry = new THREE.TorusGeometry(70, 2.2, 16, 100);
   const material = new THREE.MeshStandardMaterial({
     color: 0x3399ff,
     emissive: 0x112244,
-    metalness: 0.8,
-    roughness: 0.2,
+    metalness: 0.7,
+    roughness: 0.3,
   });
 
   const torus = new THREE.Mesh(geometry, material);
+  torus.rotation.x = Math.PI / 2; 
   scene.add(torus);
 
   const pointLight = new THREE.PointLight(0xffffff, 2);
@@ -33,20 +36,11 @@ window.addEventListener("load", () => {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
 
-  let angle = 0;
-
   function animate() {
     requestAnimationFrame(animate);
 
-    angle += 0.01;
-
     
-    const radius = 150;
-    const height = 50 * Math.sin(angle * 0.5); 
-    camera.position.x = radius * Math.cos(angle);
-    camera.position.z = radius * Math.sin(angle);
-    camera.position.y = height;
-    camera.lookAt(0, 0, 0); 
+    torus.rotation.z += 0.01;
 
     renderer.render(scene, camera);
   }
