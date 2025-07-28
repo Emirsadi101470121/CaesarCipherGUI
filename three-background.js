@@ -16,11 +16,11 @@ window.addEventListener("load", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const geometry = new THREE.TorusGeometry(4, 1.2, 16, 100); // smaller torus
+  const geometry = new THREE.TorusGeometry(4, 1.2, 16, 100);
   const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
   const torus = new THREE.Mesh(geometry, material);
 
-  torus.position.set(15, -10, -40); // move RIGHT and DOWN and FAR
+  torus.position.set(0, 0, -40); 
   torus.rotation.x = Math.PI / 4;
   torus.rotation.y = Math.PI / 4;
   scene.add(torus);
