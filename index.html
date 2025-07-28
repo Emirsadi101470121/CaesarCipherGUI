@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caesar Cipher Encoder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/three@0.148.0/build/three.min.js"></script>
   </head>
-  <body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center p-6">
+  <body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
     <h1 class="text-4xl font-bold mb-6 text-center text-blue-400">Caesar Cipher Encoder</h1>
 
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 max-w-xl w-full space-y-4">
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 max-w-xl w-full space-y-4 z-10">
       <label class="block">
         <span class="text-sm font-semibold">Enter Text</span>
         <textarea
@@ -38,16 +40,12 @@
       </div>
     </div>
 
-<canvas
-  id="bgCanvas"
-  class="fixed top-0 left-0 w-screen h-screen -z-10 pointer-events-none"
-  style="transform: translate(30%, 20%) scale(0.7);"
-></canvas>
+    <canvas
+      id="bgCanvas"
+      class="fixed top-0 left-0 w-screen h-screen -z-10 pointer-events-none"
+    ></canvas>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/three@0.148.0/build/three.min.js"></script>
-<script src="script.js"></script>
-<script src="three-background.js"></script>
-</body>
+    <script src="script.js"></script>
+    <script src="three-background.js"></script>
+  </body>
 </html>
-
