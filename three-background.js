@@ -16,11 +16,11 @@ window.addEventListener("load", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const geometry = new THREE.TorusGeometry(5, 1.5, 16, 100); // smaller torus
-  const material = new THREE.MeshStandardMaterial({ color: 0x3399ff });
+  const geometry = new THREE.TorusGeometry(4, 1.2, 16, 100); // smaller torus
+  const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
   const torus = new THREE.Mesh(geometry, material);
 
-  torus.position.set(0, 5, -30); // far back and high
+  torus.position.set(15, -10, -40); // move RIGHT and DOWN and FAR
   torus.rotation.x = Math.PI / 4;
   torus.rotation.y = Math.PI / 4;
   scene.add(torus);
@@ -29,13 +29,13 @@ window.addEventListener("load", () => {
   pointLight.position.set(10, 10, 20);
   scene.add(pointLight);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
 
   function animate() {
     requestAnimationFrame(animate);
-    torus.rotation.x += 0.003;
-    torus.rotation.y += 0.004;
+    torus.rotation.x += 0.005;
+    torus.rotation.y += 0.006;
     renderer.render(scene, camera);
   }
 
