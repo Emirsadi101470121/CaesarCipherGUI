@@ -40,8 +40,11 @@ scene.add(ambientLight);
 
 function animate() {
   torus.rotation.z += 0.01;
+  torus.rotation.y += 0.005;
+
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+  console.log("rotating...");
 }
 
 animate();
