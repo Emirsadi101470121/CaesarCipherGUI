@@ -7,8 +7,6 @@ window.addEventListener("load", () => {
     0.1,
     1000
   );
-  camera.position.z = 150;
-
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("bgCanvas"),
     alpha: true,
@@ -26,7 +24,6 @@ window.addEventListener("load", () => {
   });
 
   const torus = new THREE.Mesh(geometry, material);
-  torus.rotation.x = Math.PI / 2; // Make the ring stand up vertically
   scene.add(torus);
 
   const pointLight = new THREE.PointLight(0xffffff, 2);
@@ -44,11 +41,12 @@ window.addEventListener("load", () => {
     angle += 0.01;
 
     
-    torus.position.x = Math.cos(angle) * 60;
-    torus.position.z = Math.sin(angle) * 60;
-
-  
-    torus.rotation.y += 0.01;
+    const radius = 150;
+    const height = 50 * Math.sin(angle * 0.5); 
+    camera.position.x = radius * Math.cos(angle);
+    camera.position.z = radius * Math.sin(angle);
+    camera.position.y = height;
+    camera.lookAt(0, 0, 0); 
 
     renderer.render(scene, camera);
   }
