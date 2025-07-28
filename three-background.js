@@ -43,7 +43,7 @@ window.addEventListener("load", () => {
     const delta = (currentTime - previousTime) / 1000;
     previousTime = currentTime;
 
-    torus.rotation.z += delta * 1.2;
+    torus.rotation.z += delta * 1.5;
     renderer.render(scene, camera);
   }
 
@@ -56,5 +56,6 @@ window.addEventListener("load", () => {
   });
 
   window.addEventListener("touchstart", () => animate(performance.now()));
+  window.addEventListener("click", () => animate(performance.now()));
   window.addEventListener("mousemove", () => animate(performance.now()));
 });
