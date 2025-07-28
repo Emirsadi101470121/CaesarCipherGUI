@@ -14,7 +14,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-const geometry = new THREE.TorusGeometry(90, 2.8, 32, 120);
+const geometry = new THREE.TorusGeometry(120, 3.2, 32, 120);
 const material = new THREE.MeshStandardMaterial({
   color: 0x00aaff,
   emissive: 0x00aaff,
