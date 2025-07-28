@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caesar Cipher Encoder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+    <script src="script.js" defer></script>
+    <script src="three-background.js" defer></script>
+  </head>
+  <body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center p-6">
+    <h1 class="text-4xl font-bold mb-6 text-center text-blue-400">Caesar Cipher Encoder</h1>
+
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 max-w-xl w-full space-y-4">
+      <label class="block">
+        <span class="text-sm font-semibold">Enter Text</span>
+        <textarea
+          id="plaintext"
+          rows="4"
+          class="w-full mt-1 rounded-lg p-3 bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Type your secret message..."
+        ></textarea>
+      </label>
+
+      <label class="block">
+        <span class="text-sm font-semibold">Shift Amount</span>
+        <input
+          type="number"
+          id="shift"
+          class="w-full mt-1 rounded-lg p-3 bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter a shift value (e.g., 3)"
+        />
+      </label>
+
+      <div class="mt-4">
+        <h2 class="text-sm font-semibold">Encrypted Output:</h2>
+        <p
+          id="output"
+          class="mt-2 p-3 rounded-lg bg-gray-900 border border-gray-700 min-h-[50px]"
+        ></p>
+      </div>
+    </div>
+
+    <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+  </body>
+</html>
