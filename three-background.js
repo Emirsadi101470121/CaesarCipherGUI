@@ -7,35 +7,41 @@ window.addEventListener("load", () => {
     0.1,
     1000
   );
-  camera.position.z = 60;
+  camera.position.z = 75;
 
   const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("bgCanvas"),
     alpha: true,
+    antialias: true,
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const geometry = new THREE.TorusGeometry(4, 1.2, 16, 100);
-  const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-  const torus = new THREE.Mesh(geometry, material);
+  const geometry = new THREE.TorusGeometry(6, 1.8, 16, 100);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x3399ff,
+    emissive: 0x112244,
+    roughness: 0.4,
+    metalness: 0.6,
+  });
 
-  torus.position.set(0, 0, -40); 
-  torus.rotation.x = Math.PI / 4;
+  const torus = new THREE.Mesh(geometry, material);
+  torus.position.set(-5, -5, -30); 
+  torus.rotation.x = Math.PI / 5;
   torus.rotation.y = Math.PI / 4;
   scene.add(torus);
 
-  const pointLight = new THREE.PointLight(0xffffff, 1);
-  pointLight.position.set(10, 10, 20);
+  const pointLight = new THREE.PointLight(0xffffff, 1.5);
+  pointLight.position.set(20, 20, 20);
   scene.add(pointLight);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
   scene.add(ambientLight);
 
   function animate() {
     requestAnimationFrame(animate);
-    torus.rotation.x += 0.005;
-    torus.rotation.y += 0.006;
+    torus.rotation.x += 0.002;
+    torus.rotation.y += 0.003;
     renderer.render(scene, camera);
   }
 
